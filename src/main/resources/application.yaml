@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: ac-user-center-template
+  profiles:
+    active: dev
+  # 在 application-dev.yaml 中配置 datasource 的相关属性
+  datasource:
+    driver-class-name:
+    url:
+    username:
+    password:
+  session:
+    timeout: 2592000 # 30天过期
+server:
+  address: 0.0.0.0
+  # 在 application-dev.yaml 中配置 port
+  port:
+  servlet:
+    context-path: /api
+    session:
+      cookie:
+        max-age: 2592000 # 30天过期
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDeleted # 全局逻辑删除字段名
+      logic-delete-value: 1 # 逻辑删除值
+      logic-not-delete-value: 0
+# springdoc-openapi 项目配置
+springdoc:
+  group-configs:
+    - group: 'default'
+      packages-to-scan: com.ari24charles.usercenter.controller
